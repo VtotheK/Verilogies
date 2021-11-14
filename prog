@@ -1,0 +1,35 @@
+#! /usr/bin/vvp
+:ivl_version "10.3 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x563b6a9bf960 .scope module, "hello_world_tb" "hello_world_tb" 2 3;
+ .timescale 0 0;
+L_0x7f4572ce0018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x563b6a9ce000_0 .net "A", 0 0, L_0x7f4572ce0018;  1 drivers
+L_0x7f4572ce0060 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x563b6a9ce0d0_0 .net "B", 0 0, L_0x7f4572ce0060;  1 drivers
+v0x563b6a9ce1a0_0 .net "C", 0 0, L_0x563b6a9ce340;  1 drivers
+S_0x563b6a9bfae0 .scope module, "derp" "hello_world" 2 21, 3 1 0, S_0x563b6a9bf960;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "c"
+L_0x563b6a9ce340 .functor AND 1, L_0x7f4572ce0018, L_0x7f4572ce0060, C4<1>, C4<1>;
+v0x563b6a98a0c0_0 .net "a", 0 0, L_0x7f4572ce0018;  alias, 1 drivers
+v0x563b6a9cde20_0 .net "b", 0 0, L_0x7f4572ce0060;  alias, 1 drivers
+v0x563b6a9cdee0_0 .net "c", 0 0, L_0x563b6a9ce340;  alias, 1 drivers
+    .scope S_0x563b6a9bf960;
+T_0 ;
+    %vpi_call 2 6 "$monitor", "%b", v0x563b6a9ce1a0_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testing.v";
+    "./test.v";
