@@ -2,12 +2,8 @@
 
 module hello_world_tb();
 reg a,b;
-output A;
-output B;
-input C;
 
-wire A;
-wire B;
+input C;
 wire C;
 
 integer i;
