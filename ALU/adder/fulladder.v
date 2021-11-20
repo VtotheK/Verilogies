@@ -1,13 +1,14 @@
-module fulladder(a,b,carry_in, sum, carry);
+module fulladder(x,y,carry_in, sum, carry);
 
-input a,b,carry_in;
+input x,y,carry_in;
 output sum,carry;
+wire xab, cab, cxab;
 
-xor(xab,a,b);
+xor(xab,x,y);
 xor(sum,xab,carry_in);
 
 and(cxab, xab, carry_in);
-and(cab, a, b);
+and(cab, x, y);
 or(carry, cxab, cab);
 
 endmodule

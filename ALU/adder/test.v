@@ -1,21 +1,15 @@
 `include "adder.v"
-module addertest(input [16:0]result, output [16:0] x, output [16:0] y);
+module addertest(input [15:0]result, output [15:0] x, output [15:0] y);
 
-reg [16:0] res;
-wire [16:0] results;
-reg [16:0] x = 127;
-reg [16:0] y = 1;
+reg [15:0] x = 120;
+reg [15:0] y = 2;
+wire [15:0] result; 
+reg [15:0] res;
 
-integer i;
-
-always begin
-    $monitor("%0d", i);
-    for(i=0; i < 15; i=i+1) begin
-        res[i] = results[i];
-        #100;
-    end
+initial begin
+    $monitor("%0d",res);
 end
 
-adder shit(x,y,results);
 
+adder a(x,y,result);
 endmodule
