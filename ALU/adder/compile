@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+iverilog -Wall -o prog test.v
+
