@@ -14,6 +14,18 @@ module alu_tb(
     input wire ng
 );
 
+integer i;
+
+initial begin
+    x = 120;
+    y = 120;
+    $monitor("%0d", result);
+    for(i=0; i<64; i=i+1) begin
+       {zx, nx, zy, ny, f, no} = i; 
+       #10;
+    end
+end
+
 ALU derp(x,y,zx,nx,zy,ny,f,no,result,zr,ng);
 
 endmodule

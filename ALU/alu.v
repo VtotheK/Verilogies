@@ -1,3 +1,6 @@
+`include "fulladder/fulladder.v"
+
+
 module ALU( 
     input wire [16:0] x,
     input wire [16:0] y,
@@ -14,9 +17,13 @@ module ALU(
 
 always @(zx)
     begin
-        if(zx == 1) begin
-        out = 16'b0;
-    end
+        if(zx) begin
+            out = 16'b0;
+        end
+        else
+        begin
+            out = 16'b10;
+        end
 end
 
 

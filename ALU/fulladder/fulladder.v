@@ -1,7 +1,11 @@
-module fulladder(a,b,carry_in, sum, carry);
+module fulladder(
+    input a,
+    input b,
+    input carry_in,
+    output sum,
+    output carry);
 
-input a,b,carry_in;
-output sum,carry;
+wire xab, cxab, cab;
 
 xor(xab,a,b);
 xor(sum,xab,carry_in);
