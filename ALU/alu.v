@@ -1,7 +1,17 @@
-module ALU( x[16], y[16], zx, nx, zy, ny, f, no);
+module ALU( 
+    input [16:0] x,
+    input [16:0] y,
+    input zx,
+    input nx,
+    input zy,
+    input ny,
+    input f,
+    input no,
+    output [16:0] out,
+    output zr,
+    output ng
+);
 
-output out[16], zr, ng;
 
 
-
-endmodule;
+endmodule
