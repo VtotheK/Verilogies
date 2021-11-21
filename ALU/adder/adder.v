@@ -1,4 +1,8 @@
 `include "fulladder.v"
+
+//16 bit ripple trough adder. For some reason could not make module instansiation work trough generator.
+//Have to investigate this more later
+
 module adder(
     input [15:0] x,
     input [15:0] y,
