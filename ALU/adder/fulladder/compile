@@ -1,3 +1,0 @@
-#!usr/bin/bash
-
-iverilog -o prog test.v

@@ -1,5 +1,4 @@
-`include "fulladder/fulladder.v"
-
+`include "adder.v"
 
 module ALU( 
     input wire [16:0] x,
@@ -15,16 +14,14 @@ module ALU(
     output reg ng
 );
 
-always @(zx)
+always @(*)
     begin
         if(zx) begin
             out = 16'b0;
         end
         else
+            out = 16'b100101;
         begin
-            out = 16'b10;
         end
 end
-
-
 endmodule

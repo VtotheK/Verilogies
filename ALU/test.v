@@ -17,11 +17,12 @@ module alu_tb(
 integer i;
 
 initial begin
-    x = 120;
-    y = 120;
-    $monitor("%0d", result);
+    x = 2;
+    y = 2;
+    $display("x\ty\tzx\tnx\tzy\tny\tf\tno\tresult\tzr\tng\t");
     for(i=0; i<64; i=i+1) begin
        {zx, nx, zy, ny, f, no} = i; 
+        $monitor("%0b\t%0b\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0b\t%0d\t%0d\t",x,y,zx,nx,zy,ny,f,no,result,zr,ng);
        #10;
     end
 end
