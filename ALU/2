@@ -21,12 +21,10 @@ initial begin
     y = 1;
     $display("x\ty\tzx\tnx\tzy\tny\tf\tno\tresult\tzr\tng\t");
     {zx, nx, zy, ny, f, no} = 6'b101010; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",x,y,zx,nx,zy,ny,f,no,result,zr,ng);
-    #100;
-    {zx, nx, zy, ny, f, no} = 6'b000001; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",x,y,zx,nx,zy,ny,f,no,result,zr,ng);
-    #100;
     #10;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",x,y,zx,nx,zy,ny,f,no,result,zr,ng);
+    $display("");
+    end
 end
 
 ALU derp(x,y,zx,nx,zy,ny,f,no,result,zr,ng);

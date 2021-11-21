@@ -14,14 +14,29 @@ module ALU(
     output reg ng
 );
 
+wire co;
 always @(*)
     begin
         if(zx) begin
             out = 16'b0;
         end
-        else
-            out = 16'b100101;
-        begin
+        if(zy) begin
+            out = 16'b0;
+        end
+        if(nx) begin
+            out = -x;
+        end
+        if(ny) begin
+            out = -y;
+        end
+        if(f) begin
+            out = x + y;
+        end
+        else if(!f) begin
+            out = x&y;
+        end
+        if(no) begin
+            out = !out; 
         end
 end
 endmodule
