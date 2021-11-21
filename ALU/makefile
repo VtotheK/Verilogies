@@ -12,10 +12,5 @@ test:
 	$(CC)  $(FLAGS) -o testbench test.v
 
 .PHONY: clean
-clean-test:
-	rm -f prog testbench 
-
-clean-alu:
-	rm -f prog alu 
-clean-all:
+clean:
 	rm -f prog alu testbench 
