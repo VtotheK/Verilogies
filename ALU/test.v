@@ -5,8 +5,8 @@ module alu_tb(
     output reg [15:0] y,
     output reg [5:0] op,
     input wire signed[15:0] result,
-    input wire zr,
-    input wire ng
+    input zr,
+    input ng
 );
 
 integer i;
@@ -15,26 +15,35 @@ initial begin
     x = 1;
     y = 1;
     $display("zx\tnx\tzy\tny\tf\tno\tresult\tzr\tng\t");
-    op  = 6'b101010; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    op  = 6'b010101; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=0",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
     op  = 6'b111111; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
-    op = 6'b111010; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
-    #10;
-    op  = 6'b001100; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    op = 6'b010111; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=-1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
     op  = 6'b001100; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
-    op = 6'b110000; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    op  = 6'b000011; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
-    op  = 6'b001101; 
-    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    op = 6'b101100; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=!x",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op  = 6'b100011; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=!y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op  = 6'b001111; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=-x",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op  = 6'b110011; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=-y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op  = 6'b111110; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x+1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
 end
 

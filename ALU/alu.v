@@ -5,33 +5,43 @@ module ALU(
     input wire [15:0] y,
     input wire [5:0] op,
     output reg [15:0] out,
-    output reg zr,
-    output reg ng
+    output zr,
+    output ng
 );
 
-wire co;
+wire [15:0] co;
 reg [15:0] temp;
+wire addwire;
 always @(*)
     
-    if(op == 6'b101010) begin //0
+    if(op == 6'b010101) begin //0
+        out = 16'b0;
     end
     else if(op == 6'b111111) begin //1
+        out = 16'b1;
     end
-    else if(op == 6'b111010) begin //-1
+    else if(op == 6'b010111) begin //-1
+        out = ~(16'b0);   //~0 == signed 1111111111111111 == -1
     end
     else if(op == 6'b001100) begin //x
+        out = x;
     end
-    else if(op == 6'b110000) begin //y
+    else if(op == 6'b000011) begin //y
+        out = y;
     end
-    else if(op == 6'b001101) begin //!x
+    else if(op == 6'b101100) begin //!x
+        out = !x;
     end
     else if(op == 6'b110001) begin //!y
+        out = !y;
     end
     else if(op == 6'b001111) begin //-x
+        out = -x;
     end
     else if(op == 6'b110011) begin //-y
+        out = -y;
     end
-    else if(op == 6'b110011) begin //x+1
+    else if(op == 6'b111110) begin //x+1
     end
     else if(op == 6'b110111) begin //y+1
     end
