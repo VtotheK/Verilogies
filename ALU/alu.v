@@ -9,9 +9,19 @@ module ALU(
     output ng
 );
 
-wire [15:0] co;
+wire co;
 reg [15:0] temp;
-wire addwire;
+wire [15:0] increment_x;
+wire [15:0] decrement_x;
+wire [15:0] increment_y; 
+wire [15:0] decrement_y;
+
+
+adder inc_x(x,16'b1,increment_x,co);
+adder dec_x(x,~16'b0,decrement_x,co);
+adder inc_y(16'b1,y,increment_y,co);
+adder dec_y(~16'b0,y,decrement_y,co);
+
 always @(*)
     
     if(op == 6'b010101) begin //0
@@ -42,12 +52,16 @@ always @(*)
         out = -y;
     end
     else if(op == 6'b111110) begin //x+1
+        out = increment_x;
     end
     else if(op == 6'b110111) begin //y+1
+        out = increment_y;
     end
     else if(op == 6'b001110) begin //x-1
+        out = decrement_x;
     end
     else if(op == 6'b110010) begin //y-1
+        out = increment_y;
     end
     else if(op == 6'b000010) begin //x+y
     end
