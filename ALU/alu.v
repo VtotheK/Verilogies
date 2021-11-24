@@ -10,9 +10,6 @@ module ALU(
 );
 
 wire co;
-reg [15:0] derp;
-reg [15:0] zero = 16'b0;
-reg [15:0] one = 16'b1;
 reg [15:0] xval;
 reg [15:0] yval;
 wire [15:0] value;
