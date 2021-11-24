@@ -57,6 +57,15 @@ initial begin
     op = 6'b010000;
     $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x+y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
+    op = 6'b110010;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x-y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op = 6'b111000;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=y-x",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op = 6'b000000;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x&y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
 end
 
 ALU derp(x,y,op,result,zr,ng);

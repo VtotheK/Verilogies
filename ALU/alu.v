@@ -89,17 +89,20 @@ always @(*) if(op == 6'b010101) begin //0
         xval = x;
         yval = y;
     end
-    else if(op == 6'b010011) begin //x-y
+    else if(op == 6'b110010) begin //x-y
         out = value;
         xval = x;
         yval = -y;
     end
-    /*
-    else if(op == 6'b000111) begin //y-x
+    else if(op == 6'b111000) begin //y-x
+        out = value;
+        xval = -x;
+        yval = y;
     end
     else if(op == 6'b000000) begin //x&y
+        out = x&y;
     end
     else if(op == 6'b010101) begin //x|y
+        out = x|y;
     end
-*/
 endmodule
