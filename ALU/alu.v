@@ -10,48 +10,49 @@ module ALU(
 );
 
 wire co;
-reg [15:0] temp;
-wire [15:0] increment_x;
-wire [15:0] decrement_x;
-wire [15:0] increment_y; 
-wire [15:0] decrement_y;
-wire [15:0] sum_xy;
-wire [15:0] xminusy;
-wire [15:0] yminusx;
+reg [15:0] derp;
+reg [15:0] zero = 16'b0;
+reg [15:0] one = 16'b1;
+reg [15:0] xval;
+reg [15:0] yval;
 
+adder sum(xval,yval,value,co);
 
-adder inc_x(x,16'b1,increment_x,co);
-adder dec_x(x,~16'b0,decrement_x,co);
-adder inc_y(16'b1,y,increment_y,co);
-adder dec_y(~16'b0,y,decrement_y,co);
-adder sum(x,y,sum_xy,co);
 
 always @(*)
-    
     if(op == 6'b010101) begin //0
-        out = 16'b0;
+        xval = 16'b0;
+        yval = 16'b0;
     end
     else if(op == 6'b111111) begin //1
-        out = 16'b1;
+        xval = 16'b1;
+        yval = 16'b0;
     end
     else if(op == 6'b010111) begin //-1
-        out = ~(16'b0);   //~0 == signed 1111111111111111 == -1
+        xval = 16'b0;
+        yval = ~16'b0;
     end
     else if(op == 6'b001100) begin //x
-        out = x;
+        xval = x;
+        yval = 16'b0;
     end
     else if(op == 6'b000011) begin //y
-        out = y;
+        yval = y;
+        xval = 16'b0;
     end
     else if(op == 6'b101100) begin //!x
-        out = !x;
+        xval = !x;
+        yval = 16'b0;
     end
     else if(op == 6'b110001) begin //!y
-        out = !y;
+        yval = !y;
+        xval = 16'b0;
     end
     else if(op == 6'b111100) begin //-x
-        out = -x;
+        yval = !y;
+        xval = 16'b0;
     end
+    /*
     else if(op == 6'b110011) begin //-y
         out = -y;
     end
@@ -78,5 +79,5 @@ always @(*)
     end
     else if(op == 6'b010101) begin //x|y
     end
-
+*/
 endmodule
