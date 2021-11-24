@@ -12,8 +12,8 @@ module alu_tb(
 integer i;
 
 initial begin
-    x = 1;
-    y = 1;
+    x = 2;
+    y = 3;
     $display("zx\tnx\tzy\tny\tf\tno\tresult\tzr\tng\t");
     op  = 6'b010101; 
     $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=0",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
@@ -36,7 +36,7 @@ initial begin
     op  = 6'b100011; 
     $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=!y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
-    op  = 6'b001111; 
+    op  = 6'b111100; 
     $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=-x",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
     op  = 6'b110011; 
@@ -44,6 +44,18 @@ initial begin
     #10;
     op  = 6'b111110; 
     $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x+1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op  = 6'b111011; 
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=y+1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op = 6'b011100;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x-1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op = 6'b010011;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=y-1",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
+    #10;
+    op = 6'b010000;
+    $monitor("%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t%0d\t f(x,y)=x+y",op[0],op[1],op[2],op[3],op[4],op[5],result,zr,ng);
     #10;
 end
 

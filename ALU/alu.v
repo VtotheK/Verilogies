@@ -15,12 +15,16 @@ wire [15:0] increment_x;
 wire [15:0] decrement_x;
 wire [15:0] increment_y; 
 wire [15:0] decrement_y;
+wire [15:0] sum_xy;
+wire [15:0] xminusy;
+wire [15:0] yminusx;
 
 
 adder inc_x(x,16'b1,increment_x,co);
 adder dec_x(x,~16'b0,decrement_x,co);
 adder inc_y(16'b1,y,increment_y,co);
 adder dec_y(~16'b0,y,decrement_y,co);
+adder sum(x,y,sum_xy,co);
 
 always @(*)
     
@@ -45,7 +49,7 @@ always @(*)
     else if(op == 6'b110001) begin //!y
         out = !y;
     end
-    else if(op == 6'b001111) begin //-x
+    else if(op == 6'b111100) begin //-x
         out = -x;
     end
     else if(op == 6'b110011) begin //-y
@@ -57,13 +61,14 @@ always @(*)
     else if(op == 6'b110111) begin //y+1
         out = increment_y;
     end
-    else if(op == 6'b001110) begin //x-1
+    else if(op == 6'b011100) begin //x-1
         out = decrement_x;
     end
-    else if(op == 6'b110010) begin //y-1
-        out = increment_y;
+    else if(op == 6'b010011) begin //y-1
+        out = decrement_y;
     end
-    else if(op == 6'b000010) begin //x+y
+    else if(op == 6'b010000) begin //x+y
+        out = sum_xy;
     end
     else if(op == 6'b010011) begin //x-y
     end
