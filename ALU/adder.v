@@ -10,7 +10,6 @@ module adder(
     output co
 );
 wire [15:0] carry;
-genvar i;
 
     fulladder a1(x[0],y[0], 1'b0, o[0], carry[0]);
     fulladder a2(x[1],y[1], carry[0], o[1], carry[1]);
@@ -29,38 +28,4 @@ genvar i;
     fulladder a15(x[14],y[14], carry[13], o[14], carry[14]);
     fulladder a16(x[15],y[15], carry[14], o[15], co);
 
-
-/*
-generate
-    for(i=0; i < 15; i=i+1) begin : fulladdgen
-        if(i == 0)
-        begin 
-			fulladder adders(
-				.x(x[i]),
-				.y(y[i]),
-				.carry_in(1'b0),
-				.sum(o[i]),
-				.carry(carry[i]));
-        end
-        else if(i < 14)
-        begin
-			fulladder adders(
-				.x(x[i]),
-				.y(y[i]),
-				.carry_in(carry[i-1]),
-				.sum(o[i]),
-				.carry(carry[i]));
-        end
-		else
-		begin 
-			fulladder adders(
-				.x(x[i]),
-				.y(y[i]),
-				.carry_in(carry[i-1]),
-				.sum(o[i]),
-				.carry(co));
-		end
-end
-endgenerate
-*/
 endmodule
